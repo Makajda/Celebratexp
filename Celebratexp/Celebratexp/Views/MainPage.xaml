@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Celebratexp.Views.MainPage"
+             xmlns:common="clr-namespace:Celebratexp.Common"
+             xmlns:prismb="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             Title="{Binding Title}"
+             >
+
+    <ContentPage.Resources>
+        <common:DateToColorConverter x:Key="DateToColorConverter" />
+
+        <DataTemplate x:Key="ResultableItemTemplate">
+            <ViewCell>
+                <Grid Opacity="0.9" Margin="0,3,0,3" BackgroundColor="{Binding Date, Converter={StaticResource DateToColorConverter}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.RowSpan="2" HeightRequest="80" Source="{Binding Pitstop.ImageSource}"
+                           HorizontalOptions="End" VerticalOptions="Start"/>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
+                        <Label Style="{DynamicResource ListItemTextStyle}" Text="{Binding Pitstop.Title, StringFormat='{0}:'}" TextColor="Crimson">
+                            <Label.FontFamily>
+                                <OnPlatform x:TypeArguments="x:String">
+                                    <On Platform="iOS" Value="MarkerFelt-Thin" />
+                                    <On Platform="Android" Value="Lobster-Regular.ttf#Lobster" />
+                                    <On Platform="UWP" Value="Comic Sans MS" />
+                                </OnPlatform>
+                            </Label.FontFamily>
+                        </Label>
+                        <Label Style="{DynamicResource ListItemTextStyle}" Text="{Binding Value, StringFormat='{0:N0}'}" TextColor="Crimson">
+                            <Label.FontFamily>
+                                <OnPlatform x:TypeArguments="x:String">
+                                    <On Platform="iOS" Value="MarkerFelt-Thin" />
+                                    <On Platform="Android" Value="Lobster-Regular.ttf#Lobster" />
+                                    <On Platform="UWP" Value="Comic Sans MS" />
+                                </OnPlatform>
+                            </Label.FontFamily>
+                        </Label>
+                    </StackLayout>
+
+                    <Label Style="{DynamicResource ListItemTextStyle}" Margin="5"
+                           Text="{Binding Date, StringFormat='{0:MMM d, yyyy}'}" FontSize="Small"
+                           HorizontalOptions="Start" VerticalOptions="Center" TextColor="DarkGreen"/>
+
+                    <Label Grid.Row="1" Style="{DynamicResource ListItemTextStyle}"
+                           LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Margin="50,0,50,5"
+                           HorizontalOptions="Center" VerticalOptions="Center" TextColor="Blue" Text="{Binding Day.Name}">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="MarkerFelt-Thin" />
+                                <On Platform="Android" Value="Lobster-Regular.ttf#Lobster" />
+                                <On Platform="UWP" Value="Comic Sans MS" />
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Image Grid.RowSpan="3" Aspect="AspectFill" Source="{common:Imageres Background.jpg}"/>
+
+        <common:AdBanner />
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Resultables}" HasUnevenRows="True"
+                  ItemTemplate="{StaticResource ResultableItemTemplate}">
+            <ListView.Behaviors>
+                <prismb:EventToCommandBehavior EventName="ItemTapped" Command="{Binding EditDayCommand}" EventArgsParameterPath="Item"/>
+                <common:ListViewScrollToBehavior Item="{Binding StartToday}"/>
+            </ListView.Behaviors>
+        </ListView>
+
+        <Button Grid.Row="2" Text="{common:Locares AddDay}" Command="{Binding AddDayCommand}"
+                ContentLayout="Left, 5" ImageSource="{common:Imageres CmdAdd.png}" Padding="20"/>
+    </Grid>
+</ContentPage>

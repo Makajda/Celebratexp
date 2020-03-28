@@ -1,0 +1,132 @@
+﻿проверить todo
+
+публикация
+https://docs.microsoft.com/ru-ru/xamarin/android/deploy-test/release-prep/?tabs=windows
+https://romannurik.github.io/AndroidAssetStudio/
+https://stackoverflow.com/questions/22681907/you-uploaded-an-apk-that-is-not-zip-aligned-error
+https://developer.android.com/guide/app-bundle/
+
+
+nlog sample
+https://github.com/tafuji/Xamarin-Forms-NLog-Sample
+https://github.com/NLog/NLog/wiki/Tutorial
+https://github.com/NLog/NLog/tree/master
+https://github.com/bondarenkod/xf-nlog-netstandart-example
+var logger = NLog.LogManager.GetCurrentClassLogger();
+
+storage
+https://winplatform.wordpress.com/2018/04/19/migrating-from-pclstorage-to-net-standard-2-0/
+https://www.c-sharpcorner.com/article/local-file-storage-using-xamarin-form/
+
+шрифт https://forums.xamarin.com/discussion/33744/fontfamily-is-there-a-list-of-families-that-work-across-platforms
+
+assets icon ios https://docs.microsoft.com/ru-ru/xamarin/ios/app-fundamentals/images-icons/app-icons?tabs=windows
+unicode shapes https://www.fileformat.info/info/unicode/block/geometric_shapes/list.htm
+using лишние Power Commands Extension
+// Copyright (c) Makajda. All rights reserved. See LICENSE.md file in the solution root for full license information.
+
+var assembly = this.GetType().Assembly;
+foreach (var res in assembly.GetManifestResourceNames()) {
+    System.Diagnostics.Debug.WriteLine("found resource: " + res);
+}
+
+Углубленное https://docs.microsoft.com/ru-ru/xamarin/get-started/quickstarts/deepdive?pivots=windows
+Skia 2d https://docs.microsoft.com/ru-ru/dotnet/api/skiasharp?view=skiasharp-1.68.0
+
+RFC 4646
+en
+es
+de
+fr
+pt
+ru
+jp
+zh
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(CultureInfo.CurrentUICulture.ToString());
+sample code https://docs.microsoft.com/ru-ru/samples/browse/?redirectedfrom=MSDN-samples
+
+
+реклама
+https://www.c-sharpcorner.com/article/google-admob-display-ads-in-xamarin-forms/
+https://developers.google.com/admob/android/quick-start
+https://devblogs.microsoft.com/xamarin/lightweight-ads-for-android-apps/
+https://xamarinhelp.com/admob-xamarin-forms-display-google-ads-mobile-app/
+https://xamdev.ru/xamarin-forms-admob-android/
+https://xamdev.ru/xamarin-forms-admob-ios/
+https://xamdev.ru/lite-ads-in-android-app/
+test unit without ad account
+https://developers.google.com/admob/android/test-ads
+Google Play Ads
+AppId:
+ca-app-pub-3570293892704116~6476429153
+Name: BannerFirst, AdUnitId:
+ca-app-pub-3570293892704116/7535210012
+https://apps.admob.com/v2/home
+AndroidManifest.xml
+  <application android:label="Celebratexp.Android" android:icon="@mipmap/ic_launcher">
+    <meta-data
+           android:name="com.google.android.gms.ads.APPLICATION_ID"
+           android:value="ca-app-pub-3570293892704116~6476429153"/>
+    <activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:theme="@android:style/Theme.Translucent" />
+  </application>
+
+
+  заставка при загрузке 
+droid https://docs.microsoft.com/ru-ru/xamarin/android/user-interface/splash-screen
+https://stackoverflow.com/questions/27987195/xamarin-splash-screen-using-a-layout	!!try try try try try try
+https://stackoverflow.com/questions/58926159/android-launch-screen
+https://docs.microsoft.com/ru-ru/xamarin/xamarin-forms/platform/android/appcompat-material-design
+https://xamarinhelp.com/creating-splash-screen-xamarin-forms/	!!!Better Approach Better Approach Better Approach Better Approach part of the article
+add folder drawable
+add to drawable splash_logo.png and splash_screen.xml
+add to values colors.xml
+add to values\styles.xml MyTheme.Splash
+add SplashActivity.cs
+ios https://docs.microsoft.com/en-us/xamarin/ios/app-fundamentals/images-icons/launch-screens?tabs=macos
+//todo
+Tools->Android
+                                    <On Platform="Android" Value="Lobster-Regular.ttf#Lobster" />
+                                    <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular" />
+
+
+шрифты загрузить или поискать
+https://docs.microsoft.com/ru-ru/xamarin/xamarin-forms/user-interface/text/fonts и размеры именованых шрифтов
+https://fonts.google.com/
+http://iosfonts.com/
+
+https://github.com/InflationX/Calligraphy
+https://habr.com/ru/post/315478/
+
+<Label Text="Hello Forms with XAML">
+    <Label.FontFamily>
+        <OnPlatform x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Lobster-Regular" />
+                <On Platform="Android" Value="Lobster-Regular.ttf#Lobster-Regular" />
+                <On Platform="UWP" Value="Assets/Fonts/Lobster-Regular.ttf#Lobster" />
+        </OnPlatform>
+    </Label.FontFamily>
+</Label>
+
+В Android есть только три системных шрифта;
+1 нормальный (Droid Sans),
+2 serif (Droid Serif),
+3 monospace (Droid Sans Mono).
+С выпуском Ice Cream Sandwich Roboto стал стандартным шрифтом на Android.
+Начиная с Froyo, Noto был стандартным шрифтом на Android для всех языков, на которые не распространяется Roboto. Noto также является стандартным шрифтом для всех языков в Chrome OS.
+
+Я использую шрифт Roboto light в своем приложении. Чтобы установить шрифт, я должен добавить android:fontFamily="sans-serif-light" для каждого представления. Есть ли способ объявить шрифт Roboto как семейство шрифтов по умолчанию для всего приложения?
+да - <style name="AppTheme" parent="AppBaseTheme"> <item name="android:textViewStyle">@style/RobotoTextViewStyle</item> <item name="android:buttonStyle">@style/RobotoButtonStyle</item> </style> <style name="RobotoTextViewStyle" parent="android:Widget.TextView"> <item name="android:fontFamily">sans-serif-light</item> </style> <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button"> <item name="android:fontFamily">sans-serif-light</item> </style> 
+ выберите стиль, который вы хотите, из списка themes.xml , а затем создайте свой собственный стиль на основе оригинального. В конце используйте стиль в качестве темы приложения.
+ <application android:theme="@style/AppTheme" > </application> 
+Он будет работать только со встроенными шрифтами, такими как Roboto
+Если вы используете темы AppCompat, не забудьте удалить android: prefix. Например:
+ <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"> <item name="android:textViewStyle">@style/RobotoTextViewStyle</item> <item name="buttonStyle">@style/RobotoButtonStyle</item> </style> 
+Обратите внимание, что buttonStyle не содержит android: префикс, но textViewStyle должен содержать его.
+или
+Calligrapher calligrapher = new Calligrapher(this); calligrapher.setFont(this, "yourCustomFontHere.ttf", true); 
+
+https://web.archive.org/web/20101112022804/http://android.git.kernel.org/?p=platform%2Fframeworks%2Fbase.git%3Ba%3Dtree%3Bf%3Ddata%2Ffonts%3Bhb%3DHEAD
+https://overcoder.net/q/39328/%D0%BA%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D1%81%D0%B5%D0%BC%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%BE-%D1%88%D1%80%D0%B8%D1%84%D1%82%D0%BE%D0%B2-%D0%BF%D0%BE-%D1%83%D0%BC%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D1%8E-%D0%B4%D0%BB%D1%8F-%D0%B2%D1%81%D0%B5%D0%B3%D0%BE-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-android
+
+https://docs.microsoft.com/ru-ru/samples/xamarin/xamarin-forms-samples/workingwithfonts/
+https://docs.microsoft.com/ru-ru/samples/xamarin/xamarin-forms-samples/userinterface-text/

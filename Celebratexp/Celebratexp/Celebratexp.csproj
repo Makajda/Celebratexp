@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Background.jpg" />
+    <None Remove="Images\BackgroundDay.jpg" />
+    <None Remove="Images\CmdAdd.png" />
+    <None Remove="Images\CmdCancel.png" />
+    <None Remove="Images\CmdRemove.png" />
+    <None Remove="Images\CmdSave.png" />
+    <None Remove="Images\Day.png" />
+    <None Remove="Images\Hour.png" />
+    <None Remove="Images\Jupiter.png" />
+    <None Remove="Images\Mars.png" />
+    <None Remove="Images\Minute.png" />
+    <None Remove="Images\Month.png" />
+    <None Remove="Images\Moon.png" />
+    <None Remove="Images\Saturn.png" />
+    <None Remove="Images\Second.png" />
+    <None Remove="Images\Venus.png" />
+    <None Remove="Images\Week.png" />
+    <None Remove="Images\Year.png" />
+    <None Remove="NLog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Background.jpg" />
+    <EmbeddedResource Include="Images\BackgroundDay.jpg" />
+    <EmbeddedResource Include="Images\CmdAdd.png" />
+    <EmbeddedResource Include="Images\CmdCancel.png" />
+    <EmbeddedResource Include="Images\CmdRemove.png" />
+    <EmbeddedResource Include="Images\CmdSave.png" />
+    <EmbeddedResource Include="Images\Day.png" />
+    <EmbeddedResource Include="Images\Hour.png" />
+    <EmbeddedResource Include="Images\Jupiter.png" />
+    <EmbeddedResource Include="Images\Mars.png" />
+    <EmbeddedResource Include="Images\Minute.png" />
+    <EmbeddedResource Include="Images\Month.png" />
+    <EmbeddedResource Include="Images\Moon.png" />
+    <EmbeddedResource Include="Images\Saturn.png" />
+    <EmbeddedResource Include="Images\Second.png" />
+    <EmbeddedResource Include="Images\Venus.png" />
+    <EmbeddedResource Include="Images\Week.png" />
+    <EmbeddedResource Include="Images\Year.png" />
+    <EmbeddedResource Include="NLog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="4.6.8" />
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991221" />
+    <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1422" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Localize\Locares.en.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Locares.en.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Localize\Locares.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Locares.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DayPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
